@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,14 @@
 		79709407240D235C004E4F60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79709406240D235C004E4F60 /* Assets.xcassets */; };
 		7970940A240D235C004E4F60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79709408240D235C004E4F60 /* LaunchScreen.storyboard */; };
 		7970940D240D235C004E4F60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970940C240D235C004E4F60 /* main.m */; };
+		7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970945E240D2F49004E4F60 /* LCNavgationView.m */; };
+		79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79709462240D3812004E4F60 /* LCHeaderRefreshView.m */; };
+		A6C894150C622F04CEF4242A /* Pods_LCMoments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A95FB42C3C2F085EE8D17 /* Pods_LCMoments.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E1A95FB42C3C2F085EE8D17 /* Pods_LCMoments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCMoments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BCF5AF6258D7D0F1A30403 /* Pods-LCMoments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCMoments.release.xcconfig"; path = "Target Support Files/Pods-LCMoments/Pods-LCMoments.release.xcconfig"; sourceTree = "<group>"; };
 		797093F7240D2359004E4F60 /* LCMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797093FA240D2359004E4F60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		797093FB240D2359004E4F60 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +31,12 @@
 		79709409240D235C004E4F60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7970940B240D235C004E4F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7970940C240D235C004E4F60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7970945D240D2F49004E4F60 /* LCNavgationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCNavgationView.h; sourceTree = "<group>"; };
+		7970945E240D2F49004E4F60 /* LCNavgationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCNavgationView.m; sourceTree = "<group>"; };
+		79709460240D2FDD004E4F60 /* LCDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDefine.h; sourceTree = "<group>"; };
+		79709461240D3812004E4F60 /* LCHeaderRefreshView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHeaderRefreshView.h; sourceTree = "<group>"; };
+		79709462240D3812004E4F60 /* LCHeaderRefreshView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHeaderRefreshView.m; sourceTree = "<group>"; };
+		C287E3ADFF4D70DB4D2E0F50 /* Pods-LCMoments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCMoments.debug.xcconfig"; path = "Target Support Files/Pods-LCMoments/Pods-LCMoments.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +44,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C894150C622F04CEF4242A /* Pods_LCMoments.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4299F471DF5C51B6C5677BED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E1A95FB42C3C2F085EE8D17 /* Pods_LCMoments.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		797093EE240D2359004E4F60 = {
 			isa = PBXGroup;
 			children = (
 				797093F9240D2359004E4F60 /* LCMoments */,
 				797093F8240D2359004E4F60 /* Products */,
+				C3805FE26E0262CDB8799B95 /* Pods */,
+				4299F471DF5C51B6C5677BED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +84,11 @@
 				797093FB240D2359004E4F60 /* AppDelegate.m */,
 				79709400240D2359004E4F60 /* ViewController.h */,
 				79709401240D2359004E4F60 /* ViewController.m */,
+				7970945D240D2F49004E4F60 /* LCNavgationView.h */,
+				7970945E240D2F49004E4F60 /* LCNavgationView.m */,
+				79709461240D3812004E4F60 /* LCHeaderRefreshView.h */,
+				79709462240D3812004E4F60 /* LCHeaderRefreshView.m */,
+				79709460240D2FDD004E4F60 /* LCDefine.h */,
 				79709403240D2359004E4F60 /* Main.storyboard */,
 				79709406240D235C004E4F60 /* Assets.xcassets */,
 				79709408240D235C004E4F60 /* LaunchScreen.storyboard */,
@@ -71,6 +98,15 @@
 			path = LCMoments;
 			sourceTree = "<group>";
 		};
+		C3805FE26E0262CDB8799B95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C287E3ADFF4D70DB4D2E0F50 /* Pods-LCMoments.debug.xcconfig */,
+				44BCF5AF6258D7D0F1A30403 /* Pods-LCMoments.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +114,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79709410240D235C004E4F60 /* Build configuration list for PBXNativeTarget "LCMoments" */;
 			buildPhases = (
+				30CBB4E6E26683FF0A716316 /* [CP] Check Pods Manifest.lock */,
 				797093F3240D2359004E4F60 /* Sources */,
 				797093F4240D2359004E4F60 /* Frameworks */,
 				797093F5240D2359004E4F60 /* Resources */,
+				F86414010CBECF5797A65115 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,12 +174,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30CBB4E6E26683FF0A716316 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCMoments-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F86414010CBECF5797A65115 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LCMoments/Pods-LCMoments-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LCMoments/Pods-LCMoments-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LCMoments/Pods-LCMoments-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		797093F3240D2359004E4F60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				79709402240D2359004E4F60 /* ViewController.m in Sources */,
+				79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */,
+				7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */,
 				797093FC240D2359004E4F60 /* AppDelegate.m in Sources */,
 				7970940D240D235C004E4F60 /* main.m in Sources */,
 			);
@@ -219,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -281,6 +363,7 @@
 		};
 		79709411240D235C004E4F60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C287E3ADFF4D70DB4D2E0F50 /* Pods-LCMoments.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +381,7 @@
 		};
 		79709412240D235C004E4F60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44BCF5AF6258D7D0F1A30403 /* Pods-LCMoments.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

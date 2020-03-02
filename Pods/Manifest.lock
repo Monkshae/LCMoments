@@ -1,0 +1,40 @@
+PODS:
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
+  - MJExtension (3.2.1)
+  - MJRefresh (3.3.1)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - IGListKit
+  - MJExtension
+  - MJRefresh
+  - SDWebImage
+  - YYKit
+
+SPEC REPOS:
+  trunk:
+    - IGListDiffKit
+    - IGListKit
+    - MJExtension
+    - MJRefresh
+    - SDWebImage
+    - YYKit
+
+SPEC CHECKSUMS:
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+  MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+PODFILE CHECKSUM: db90dbabd3af37e476397d0e9c79d557252be4c0
+
+COCOAPODS: 1.8.0

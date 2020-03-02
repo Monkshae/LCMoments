@@ -1,0 +1,6 @@
+framework module Pods_LCMoments {
+  umbrella header "Pods-LCMoments-umbrella.h"
+
+  export *
+  module * { export * }
+}
