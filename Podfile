@@ -10,7 +10,9 @@ target 'LCMoments' do
 pod 'IGListKit'
 pod 'MJExtension'
 pod 'MJRefresh'
-pod ‘SDWebImage’
+pod 'SDWebImage'
 pod 'YYKit'
+pod 'AFNetworking'
+pod 'SVProgressHUD'
 
 end
