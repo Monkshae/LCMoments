@@ -10,6 +10,7 @@
 #define LCDefine_h
 
 #import <YYKit/YYKit.h>
+#import <IGListKit/IGListKit.h>
 
 #define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)

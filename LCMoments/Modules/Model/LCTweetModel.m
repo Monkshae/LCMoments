@@ -9,9 +9,9 @@
 #import "LCTweetModel.h"
 #import <MJExtension/MJExtension.h>
 
-
 @implementation LCImageModel
 MJExtensionCodingImplementation
+
 
 @end
 
@@ -22,11 +22,13 @@ MJExtensionCodingImplementation
     return @{@"nickName" : @"nick"};
 }
 
+
 @end
 
 
 @implementation LCCommentModel
 MJExtensionCodingImplementation
+
 
 @end
 
