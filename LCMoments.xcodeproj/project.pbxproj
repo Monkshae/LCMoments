@@ -15,6 +15,8 @@
 		7970940D240D235C004E4F60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970940C240D235C004E4F60 /* main.m */; };
 		7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970945E240D2F49004E4F60 /* LCNavgationView.m */; };
 		79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79709462240D3812004E4F60 /* LCHeaderRefreshView.m */; };
+		79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF17240E84060005CFBF /* LCUserInfoModel.m */; };
+		79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF1A240E87020005CFBF /* LCTweetModel.m */; };
 		A6C894150C622F04CEF4242A /* Pods_LCMoments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A95FB42C3C2F085EE8D17 /* Pods_LCMoments.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,10 @@
 		79709460240D2FDD004E4F60 /* LCDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDefine.h; sourceTree = "<group>"; };
 		79709461240D3812004E4F60 /* LCHeaderRefreshView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHeaderRefreshView.h; sourceTree = "<group>"; };
 		79709462240D3812004E4F60 /* LCHeaderRefreshView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHeaderRefreshView.m; sourceTree = "<group>"; };
+		79B4DF16240E84060005CFBF /* LCUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUserInfoModel.h; sourceTree = "<group>"; };
+		79B4DF17240E84060005CFBF /* LCUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUserInfoModel.m; sourceTree = "<group>"; };
+		79B4DF19240E87020005CFBF /* LCTweetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetModel.h; sourceTree = "<group>"; };
+		79B4DF1A240E87020005CFBF /* LCTweetModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCTweetModel.m; sourceTree = "<group>"; };
 		C287E3ADFF4D70DB4D2E0F50 /* Pods-LCMoments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCMoments.debug.xcconfig"; path = "Target Support Files/Pods-LCMoments/Pods-LCMoments.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +95,7 @@
 				79709461240D3812004E4F60 /* LCHeaderRefreshView.h */,
 				79709462240D3812004E4F60 /* LCHeaderRefreshView.m */,
 				79709460240D2FDD004E4F60 /* LCDefine.h */,
+				79B4DF15240E83AC0005CFBF /* Model */,
 				79709403240D2359004E4F60 /* Main.storyboard */,
 				79709406240D235C004E4F60 /* Assets.xcassets */,
 				79709408240D235C004E4F60 /* LaunchScreen.storyboard */,
@@ -96,6 +103,17 @@
 				7970940C240D235C004E4F60 /* main.m */,
 			);
 			path = LCMoments;
+			sourceTree = "<group>";
+		};
+		79B4DF15240E83AC0005CFBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79B4DF16240E84060005CFBF /* LCUserInfoModel.h */,
+				79B4DF17240E84060005CFBF /* LCUserInfoModel.m */,
+				79B4DF19240E87020005CFBF /* LCTweetModel.h */,
+				79B4DF1A240E87020005CFBF /* LCTweetModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C3805FE26E0262CDB8799B95 /* Pods */ = {
@@ -222,7 +240,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79709402240D2359004E4F60 /* ViewController.m in Sources */,
+				79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */,
 				79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */,
+				79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */,
 				7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */,
 				797093FC240D2359004E4F60 /* AppDelegate.m in Sources */,
 				7970940D240D235C004E4F60 /* main.m in Sources */,
