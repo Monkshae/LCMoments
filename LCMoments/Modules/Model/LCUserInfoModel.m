@@ -7,8 +7,10 @@
 //
 
 #import "LCUserInfoModel.h"
+#import <MJExtension/MJExtension.h>
 
 @implementation LCUserInfoModel
+MJExtensionCodingImplementation
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"profileImage" : @"profile-image",

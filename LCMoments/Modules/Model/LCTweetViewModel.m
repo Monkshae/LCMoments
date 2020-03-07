@@ -14,9 +14,13 @@
 #import "LCTweetModel.h"
 #import "LCCommentSectionViewModel.h"
 #import "LCContentSectionViewModel.h"
+#import "LCCacheUtil.h"
 
 static NSString * const kUserInfoUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/jsmith.json";
 static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/tweets.json";
+static NSString * const kTweetsCacheKey = @"kTweetsCacheKey";
+static NSString * const kUserInfoCacheKey = @"kUserInfoCacheKey";
+
 
 @interface LCTweetViewModel ()
 
@@ -40,46 +44,49 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
 
 - (void)requestUserInfo:(void (^)(LCUserInfoModel * _Nonnull))successBlock
              faileBlock:(void (^)(NSError * _Nullable))faileBlock {
-      NSURL *URL = [NSURL URLWithString:kUserInfoUrl];
-      NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-      NSURLSessionDataTask *dataTask =[self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-          if (error) {
-              [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-              faileBlock(error);
-          } else {
-              [SVProgressHUD dismiss];
-              LCUserInfoModel *info = [LCUserInfoModel mj_objectWithKeyValues:responseObject];
-              successBlock(info);
-          }
-      }];
-      [dataTask resume];
+    LCUserInfoModel * cacheInfo = [LCCacheUtil readCustomObjectsFrom:kUserInfoCacheKey];
+    if (cacheInfo) {
+        return successBlock(cacheInfo);
+    } else {
+        NSURL *URL = [NSURL URLWithString:kUserInfoUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        NSURLSessionDataTask *dataTask =[self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                faileBlock(error);
+            } else {
+                [SVProgressHUD dismiss];
+                LCUserInfoModel *info = [LCUserInfoModel mj_objectWithKeyValues:responseObject];
+                [LCCacheUtil saveCustomObjects:info fileName:kUserInfoCacheKey];
+                successBlock(info);
+            }
+        }];
+        [dataTask resume];
+    }
 }
 
 - (void)requestTweetsWithSuccessBlock:(void (^)(NSArray * _Nonnull))successBlock
                            faileBlock:(void (^)(NSError * _Nullable))faileBlock {
-      NSURL *URL = [NSURL URLWithString:kTweetsUrl];
-      NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-      NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    
+    NSArray * cacheTweets = [LCCacheUtil readCustomObjectsFrom:kTweetsCacheKey];
+    if (cacheTweets.count > 0) {
+        successBlock(cacheTweets);
+    } else {
+        NSURL *URL = [NSURL URLWithString:kTweetsUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
           if (error) {
               [SVProgressHUD showErrorWithStatus:error.localizedDescription];
               faileBlock(error);
           } else {
               [SVProgressHUD dismiss];
               NSArray <LCTweetModel *> *tweets = [LCTweetModel mj_objectArrayWithKeyValuesArray:responseObject];
-//              NSMutableArray *tweetList = [[NSMutableArray alloc]init];
-//
-//              [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                  LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
-//                  LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
-//                  if (obj.sender.username.length > 0) {
-//                     [tweetList addObject:contentSectionViewModel];
-//                     [tweetList addObject:commentSectionViewModel];
-//                  }
-//              }];
+              [LCCacheUtil saveCustomObjects:tweets fileName:kTweetsCacheKey];
               successBlock(tweets);
           }
-      }];
-      [dataTask resume];
+        }];
+        [dataTask resume];
+    }
 }
 
 - (AFURLSessionManager *)manager {

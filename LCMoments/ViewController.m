@@ -36,9 +36,19 @@
 
 @implementation ViewController
 
+- (instancetype)init {
+    if (self = [super init]) {
+
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.viewModel = [[LCTweetViewModel alloc]init];
+    self.navigationController.navigationBarHidden = YES;
     self.title = @"朋友圈";
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -50,12 +60,17 @@
     self.adapter.collectionView = self.collectionView;
     self.adapter.dataSource = self;
     self.adapter.scrollViewDelegate = self;
+    
+    self.collectionView.mj_header = [LCHeaderRefreshView headerWithRefreshingBlock:^{
+        [self fetchData];
+    }];
+    
+    [self fetchData];
+}
 
-            
-    self.viewModel = [[LCTweetViewModel alloc]init];
+- (void)fetchData {
     __weak typeof(self) weakSelf = self;
     dispatch_group_t group = dispatch_group_create();
-
     dispatch_group_enter(group);
     [self.viewModel requestUserInfo:^(LCUserInfoModel * _Nonnull infoModel) {
         weakSelf.userInfo = infoModel;
@@ -63,7 +78,7 @@
     } faileBlock:^(NSError * _Nullable error) {
         dispatch_group_leave(group);
     }];
-    
+
     dispatch_group_enter(group);
     [self.viewModel requestTweetsWithSuccessBlock:^(NSArray * _Nonnull list) {
         weakSelf.tweets = [list mutableCopy];
@@ -71,29 +86,25 @@
     } faileBlock:^(NSError * _Nullable error) {
         dispatch_group_leave(group);
     }];
-    
-    self.navigationController.navigationBarHidden = YES;
-    self.collectionView.mj_header = [LCHeaderRefreshView headerWithRefreshingBlock:^{
-        [self.collectionView.mj_header endRefreshing];
-    }];
-    
+      
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSMutableArray *tweetList = [[NSMutableArray alloc]init];
-        [self.tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
-            LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
-            LCHeadImageSectionViewModel *headImageSectionViewModel = [[LCHeadImageSectionViewModel alloc]initWithUserInfoModel:self.userInfo section:idx];
-            if (obj.sender.username.length > 0) {
-                [tweetList addObject:headImageSectionViewModel];
-                [tweetList addObject:contentSectionViewModel];
-                [tweetList addObject:commentSectionViewModel];
-            }
-       }];
-        self.dataArray = [tweetList mutableCopy];
-        [self.adapter reloadDataWithCompletion:nil];
+      NSMutableArray *tweetList = [[NSMutableArray alloc]init];
+      [self.tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+          LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
+          LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
+          LCHeadImageSectionViewModel *headImageSectionViewModel = [[LCHeadImageSectionViewModel alloc]initWithUserInfoModel:self.userInfo section:idx];
+          if (obj.sender.username.length > 0) {
+              [tweetList addObject:headImageSectionViewModel];
+              [tweetList addObject:contentSectionViewModel];
+              [tweetList addObject:commentSectionViewModel];
+          }
+     }];
+      self.dataArray = [tweetList mutableCopy];
+      [self.adapter reloadDataWithCompletion:nil];
     });
 }
 
+#pragma mark - IGListAdapterDataSource
 
 - (NSArray<id <IGListDiffable>> *)objectsForListAdapter:(IGListAdapter *)listAdapter {
     return self.dataArray;
