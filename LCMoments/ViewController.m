@@ -126,12 +126,11 @@
         }
         
         [self.collectionView.mj_footer endRefreshing];
-        NSInteger remainder = self.realCount / 5;
-        NSInteger diff = ABS(self.realCount - self.cursor);
-        if (diff < 5) {
-            onePageList = [self.allArray subarrayWithRange:NSMakeRange(self.cursor, remainder * 3)];
+        NSInteger diff = self.realCount - self.cursor;
+        if (diff <= 5) {
+            onePageList = [self.allArray subarrayWithRange:NSMakeRange(self.cursor * 3, diff * 3)];
         } else {
-            onePageList = [self.allArray subarrayWithRange:NSMakeRange(self.cursor, 5 * 3)];
+            onePageList = [self.allArray subarrayWithRange:NSMakeRange(self.cursor * 3, 5 * 3)];
         }
         [self.dataArray addObjectsFromArray:onePageList];
         [self.adapter reloadDataWithCompletion:nil];
