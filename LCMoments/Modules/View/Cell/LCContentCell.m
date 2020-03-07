@@ -8,12 +8,15 @@
 
 #import "LCContentCell.h"
 #import "LCDefine.h"
+#import "LCImageBrowser.h"
+#import "LCPhotoView.h"
 
 @interface LCContentCell ()
 
 @property(nonatomic, strong) UIImageView *avatar;
 @property(nonatomic, strong) UILabel *nameLabel;
 @property(nonatomic, strong) UILabel *contentLabel;
+@property(nonatomic, strong) LCPhotoView *photoView;
 
 @end
 
@@ -58,12 +61,29 @@
         make.left.equalTo(self.nameLabel);
         make.right.equalTo(@(-kCellPadding));
     }];
+    
+    self.photoView = [[LCPhotoView alloc] init];
+    [self.contentView addSubview:self.photoView];
+    [self.photoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.nameLabel);
+        make.width.equalTo(@(229));
+        make.top.equalTo(self.contentLabel.mas_bottom).offset(kCellItemInset);
+        make.height.equalTo(@0);
+    }];
 }
 
 - (void)feedCellWithViewModel:(LCContentCellViewModel *)viewModel {
     
     self.nameLabel.text = viewModel.userName;
     self.contentLabel.text = viewModel.content;
+    [self.avatar sd_setImageWithURL:[NSURL URLWithString:viewModel.avatar] placeholderImage:[UIImage imageNamed:@"girl.jpeg"]];
+
+    [self.photoView feedPhotoViewWithArray:viewModel.images];
+    [self.photoView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentLabel.mas_bottom).offset(kCellItemInset);
+        make.height.equalTo(@(viewModel.picHeight));
+    }];
+    
 }
 
 @end

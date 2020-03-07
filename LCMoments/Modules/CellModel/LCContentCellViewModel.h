@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, readonly) NSString *content;
 @property(nonatomic, readonly) NSString *userName;
+@property(nonatomic, readonly) NSString *avatar;
 @property(nonatomic, readonly) NSInteger imageCount;
+@property(nonatomic, readonly) NSArray <NSString*> *images;
 
 @property(nonatomic, readonly) CGFloat picHeight;
 @property(nonatomic, readonly) CGFloat cellHeight;
