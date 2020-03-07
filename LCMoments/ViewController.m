@@ -27,8 +27,16 @@
 @property (nonatomic, strong) LCUserInfoModel *userInfo;
 @property (nonatomic, strong) LCTweetViewModel *viewModel;
 @property (nonatomic, assign) CGFloat contentOffsetY;
-@property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSArray<LCTweetModel*> *tweets;
+/// 上拉刷新的游标
+@property (nonatomic, assign) NSInteger cursor;
+/// 所以twwets文
+@property (nonatomic, strong) NSArray *allArray;
+/// 真实显示在屏幕的推文
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
+/// 真实有效的推文数据
+@property (nonatomic, assign) NSInteger realCount;
 
 @end
 
@@ -45,6 +53,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.cursor = 0;
+    self.dataArray = [[NSMutableArray alloc]init];
     self.viewModel = [[LCTweetViewModel alloc]init];
     self.navigationController.navigationBarHidden = YES;
     self.title = @"朋友圈";
@@ -60,13 +70,18 @@
     self.adapter.scrollViewDelegate = self;
     
     self.collectionView.mj_header = [LCHeaderRefreshView headerWithRefreshingBlock:^{
-        [self fetchData];
+
     }];
     
-    [self fetchData];
+    //每次下拉加载5条
+    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self reloadTweetsByFiveStep];
+    }];
+    
+    [self fetchAllData];
 }
 
-- (void)fetchData {
+- (void)fetchAllData {
     __weak typeof(self) weakSelf = self;
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
@@ -91,14 +106,36 @@
           LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
           LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
           LCHeadImageSectionViewModel *headImageSectionViewModel = [[LCHeadImageSectionViewModel alloc]initWithUserInfoModel:self.userInfo section:idx];
-          if (obj.sender.username.length > 0) {
+          if (obj.sender.username.length > 0 ) {
               [tweetList addObject:headImageSectionViewModel];
               [tweetList addObject:contentSectionViewModel];
               [tweetList addObject:commentSectionViewModel];
           }
      }];
-      self.dataArray = [tweetList mutableCopy];
-      [self.adapter reloadDataWithCompletion:nil];
+        self.allArray = [tweetList mutableCopy];
+        [self reloadTweetsByFiveStep];
+    });
+}
+
+- (void)reloadTweetsByFiveStep {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSArray *onePageList = nil;
+        if (self.cursor >= self.realCount) {
+            [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+            return;
+        }
+        
+        [self.collectionView.mj_footer endRefreshing];
+        NSInteger remainder = self.realCount / 5;
+        NSInteger diff = ABS(self.realCount - self.cursor);
+        if (diff < 5) {
+            onePageList = [self.allArray subarrayWithRange:NSMakeRange(self.cursor, remainder * 3)];
+        } else {
+            onePageList = [self.allArray subarrayWithRange:NSMakeRange(self.cursor, 5 * 3)];
+        }
+        [self.dataArray addObjectsFromArray:onePageList];
+        [self.adapter reloadDataWithCompletion:nil];
+        self.cursor += 5;
     });
 }
 
@@ -136,11 +173,9 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
     self.contentOffsetY = scrollView.contentOffset.y;
     self.navView.navV.alpha = self.contentOffsetY / 150;
     self.navView.navLabel.alpha = self.contentOffsetY / 150;
-
     if (self.contentOffsetY / 150 > 0.6) {
         self.navView.isScrollUp = YES;
     } else {
@@ -178,6 +213,10 @@
         }
     }
     return _collectionView;
+}
+
+- (NSInteger)realCount {
+    return self.allArray.count / 3;
 }
 
 @end
