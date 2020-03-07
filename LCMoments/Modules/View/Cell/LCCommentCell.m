@@ -11,7 +11,7 @@
 
 @interface LCCommentCell ()
 
-@property(nonatomic, strong) YYLabel *commentLabel;
+@property (nonatomic, strong) YYLabel *commentLabel;
 
 @end
 

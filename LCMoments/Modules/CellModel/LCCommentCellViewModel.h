@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCCommentCellViewModel : NSObject
 
-@property(nonatomic, readonly) NSAttributedString *commentAttributedString;
-@property(nonatomic, readonly) CGFloat cellHeight;
+@property (nonatomic, readonly) NSAttributedString *commentAttributedString;
+@property (nonatomic, readonly) CGFloat cellHeight;
 
 - (instancetype)initWithCommentModel:(LCCommentModel *)model;
 

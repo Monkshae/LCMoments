@@ -10,8 +10,8 @@
 
 @interface LCCommentCellViewModel ()
 
-@property(nonatomic, strong) NSAttributedString *commentAttributedString;
-@property(nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, strong) NSAttributedString *commentAttributedString;
+@property (nonatomic, assign) CGFloat cellHeight;
 
 @end
 

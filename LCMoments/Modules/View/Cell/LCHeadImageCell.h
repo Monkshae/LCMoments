@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCHeadImageCell : UICollectionViewCell 
 
-@property(nonatomic, strong) UIImageView *headImageView;
-@property(nonatomic, strong) UIImageView *headAvatar;
-@property(nonatomic, strong) UILabel *userNameLable;
+@property (nonatomic, strong) UIImageView *headImageView;
+@property (nonatomic, strong) UIImageView *headAvatar;
+@property (nonatomic, strong) UILabel *userNameLable;
 
 - (void)feedCellWithViewModel:(LCHeadImageCellViewModel *)viewModel;
 

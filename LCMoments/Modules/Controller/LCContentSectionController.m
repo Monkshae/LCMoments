@@ -12,7 +12,7 @@
 
 @interface LCContentSectionController ()
 
-@property(nonatomic, strong) LCContentSectionViewModel *viewModel;
+@property (nonatomic, strong) LCContentSectionViewModel *viewModel;
 
 @end
 

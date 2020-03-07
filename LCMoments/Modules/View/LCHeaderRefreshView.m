@@ -22,7 +22,7 @@
     [super prepare];
     self.ignoredScrollViewContentInsetTop = - 60;
     self.mj_h = kHeadHeight;
-        UIImageView* rotateImage = [[UIImageView alloc]
+    UIImageView* rotateImage = [[UIImageView alloc]
                                  initWithImage:[UIImage imageNamed:@"refresh"]];
     [self addSubview:rotateImage];
     self.rotateImage = rotateImage;

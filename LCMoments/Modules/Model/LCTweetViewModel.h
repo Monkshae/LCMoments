@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCTweetViewModel : NSObject
 
-//@property (nonatomic, readonly) NSArray <LCContentCellViewModel *> *tweetList;
-
 - (void)requestUserInfo:(void(^)(LCUserInfoModel *infoModel))successBlock faileBlock:(void(^)(NSError * _Nullable error))faileBlock;
 
 - (void)requestTweetsWithSuccessBlock:(void(^)(NSArray *list))successBlock faileBlock:(void(^)(NSError * _Nullable error))faileBlock;

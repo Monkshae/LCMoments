@@ -11,14 +11,14 @@
 
 @interface LCContentCellViewModel ()
 
-@property(nonatomic, strong) NSString *content;
-@property(nonatomic, strong) NSString *userName;
-@property(nonatomic, strong) NSString *avatar;
-@property(nonatomic, assign) NSInteger imageCount;
-@property(nonatomic, strong) NSArray <NSString*> *images;
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *avatar;
+@property (nonatomic, assign) NSInteger imageCount;
+@property (nonatomic, strong) NSArray <NSString*> *images;
 
-@property(nonatomic, assign) CGFloat picHeight;
-@property(nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, assign) CGFloat picHeight;
+@property (nonatomic, assign) CGFloat cellHeight;
 
 @end
 

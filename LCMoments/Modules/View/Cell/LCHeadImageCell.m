@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = [UIColor greenColor];
 
-        CGFloat avatorW = 80;
+        CGFloat avatorWidth = 80;
         CGFloat headImageVerIndentation = 60;
         CGFloat space = 20;
         
@@ -24,7 +24,7 @@
         headImageView.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:headImageView];
         
-        UIImageView *headAvatar = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH- avatorW - 16 , self.bounds.size.height -avatorW - headImageVerIndentation + space, avatorW, avatorW)];
+        UIImageView *headAvatar = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH- avatorWidth - 16 , self.bounds.size.height - avatorWidth - headImageVerIndentation + space, avatorWidth, avatorWidth)];
         headAvatar.layer.cornerRadius = 10;
         headAvatar.layer.masksToBounds = YES;
         [self addSubview:headAvatar];
@@ -43,13 +43,8 @@
 }
 
 - (void)feedCellWithViewModel:(LCHeadImageCellViewModel *)viewModel {
-    //http://pic.kekenet.com/2014/1113/16391415865876.jpg    
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:viewModel.headImage] placeholderImage:[UIImage imageNamed:@"girl.jpeg"]];
-
-    //http://5b0988e595225.cdn.sohucs.com/images/20171002/394dd13e0fb4479aaa159ba45e994bff.jpeg
-    
     [self.headAvatar sd_setImageWithURL:[NSURL URLWithString:viewModel.headAvatar] placeholderImage:[UIImage imageNamed:@"girl.jpeg"]];
-
      self.userNameLable.text = viewModel.headUserName;
 }
 

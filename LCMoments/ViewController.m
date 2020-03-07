@@ -21,16 +21,14 @@
 
 @interface ViewController ()<IGListAdapterDataSource, UIScrollViewDelegate>
 
-@property(nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic, strong) LCNavigationView *navView;
-@property(nonatomic, strong) IGListAdapter *adapter;
-
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) LCNavigationView *navView;
+@property (nonatomic, strong) IGListAdapter *adapter;
 @property (nonatomic, strong) LCUserInfoModel *userInfo;
-@property(nonatomic, strong) LCTweetViewModel *viewModel;
-@property(nonatomic, assign) CGFloat contentOffsetY;
-@property(nonatomic, strong) NSArray *dataArray;
-
-@property(nonatomic, strong) NSArray<LCTweetModel*> *tweets;
+@property (nonatomic, strong) LCTweetViewModel *viewModel;
+@property (nonatomic, assign) CGFloat contentOffsetY;
+@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray<LCTweetModel*> *tweets;
 
 @end
 
@@ -137,7 +135,6 @@
     self.collectionView.frame = self.view.frame;
 }
 
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     self.contentOffsetY = scrollView.contentOffset.y;
@@ -157,7 +154,6 @@
     }
     return _navView;
 }
-
 
 #pragma mark - Lazying loading
 
@@ -183,46 +179,5 @@
     }
     return _collectionView;
 }
-
-//- (void)requestUserInfo {
-//      NSURL *URL = [NSURL URLWithString:kUserInfoUrl];
-//      NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-//      NSURLSessionDataTask *dataTask =[self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//          if (error) {
-//              [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-//          } else {
-//              [SVProgressHUD dismiss];
-//              LCUserInfoModel *info = [LCUserInfoModel mj_objectWithKeyValues:responseObject];
-//              self.userInfo = info;
-//              
-//          }
-//          
-//      }];
-//      [dataTask resume];
-//}
-//
-//- (void)requestTweets {
-//      NSURL *URL = [NSURL URLWithString:kTweetsUrl];
-//      NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-//      NSURLSessionDataTask *dataTask =[self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//          if (error) {
-//              [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-//          } else {
-//              [SVProgressHUD dismiss];
-//              NSArray <LCTweetModel *> *tweets = [LCTweetModel mj_objectArrayWithKeyValuesArray:responseObject];
-//              self.tweetList = [tweets  mutableCopy];
-//          }
-//          
-//      }];
-//      [dataTask resume];
-//}
-//
-//- (AFURLSessionManager *)manager {
-//    if (!_manager) {
-//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//        _manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-//    }
-//    return _manager;
-//}
 
 @end

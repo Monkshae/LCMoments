@@ -25,11 +25,7 @@ static NSString * const kUserInfoCacheKey = @"kUserInfoCacheKey";
 @interface LCTweetViewModel ()
 
 @property (nonatomic, strong) AFURLSessionManager *manager;
-//@property (nonatomic, strong) LCUserInfoModel *userInfo;
-
 @property (nonatomic, strong) NSArray *dataArray;
-
-//@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
 
 @end
 

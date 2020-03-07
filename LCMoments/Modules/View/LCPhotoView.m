@@ -13,9 +13,9 @@
 
 @interface LCPhotoView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property(nonatomic, strong) NSMutableArray <NSString *> *dataArray;
-@property(nonatomic, strong) NSMutableArray <NSString *> *imageArray;
-@property(nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray <NSString *> *dataArray;
+@property (nonatomic, strong) NSMutableArray <NSString *> *imageArray;
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
 

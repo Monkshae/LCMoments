@@ -13,10 +13,10 @@
 
 @interface LCContentCell ()
 
-@property(nonatomic, strong) UIImageView *avatar;
-@property(nonatomic, strong) UILabel *nameLabel;
-@property(nonatomic, strong) UILabel *contentLabel;
-@property(nonatomic, strong) LCPhotoView *photoView;
+@property (nonatomic, strong) UIImageView *avatar;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) LCPhotoView *photoView;
 
 @end
 

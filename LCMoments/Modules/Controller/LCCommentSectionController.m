@@ -12,7 +12,7 @@
 
 @interface LCCommentSectionController ()
 
-@property(nonatomic, strong) LCCommentSectionViewModel *viewModel;
+@property (nonatomic, strong) LCCommentSectionViewModel *viewModel;
 
 @end
 

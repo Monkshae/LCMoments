@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *headAvatar;
 @property (nonatomic, readonly) NSString *headUserName;
 
-@property(nonatomic, readonly) CGFloat cellHeight;
+@property (nonatomic, readonly) CGFloat cellHeight;
 
 - (instancetype)initWithUserInfoModel:(LCUserInfoModel *)model section:(NSInteger)section;
 
