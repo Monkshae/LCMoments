@@ -124,7 +124,7 @@
 - (nullable UIView *)emptyViewForListAdapter:(IGListAdapter *)listAdapter {
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 90)];
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = [UIColor greenColor];
     return view;
 }
 
