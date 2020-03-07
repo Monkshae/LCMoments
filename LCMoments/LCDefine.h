@@ -30,5 +30,13 @@
 #define  kCellItemInset  12.0
 #define  kCellPicInset  5.0
 
+#define LC_DISPATCH_ASYNC(queue, block)\
+if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(queue)) == 0) {\
+block();\
+} else {\
+dispatch_async(queue, block);\
+}
+
+#define LC_DISPATCH_ASYNC_MAIN(block) LC_DISPATCH_ASYNC(dispatch_get_main_queue(), block)
 
 #endif /* LCDefine_h */

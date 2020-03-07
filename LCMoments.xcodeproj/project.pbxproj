@@ -18,6 +18,10 @@
 		798F9FA224134DBD00F7FE01 /* LCTweetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA124134DBD00F7FE01 /* LCTweetViewModel.m */; };
 		798F9FA52413581500F7FE01 /* LCContentSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA42413581500F7FE01 /* LCContentSectionController.m */; };
 		798F9FA92413622400F7FE01 /* LCCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA82413622400F7FE01 /* LCCacheUtil.m */; };
+		798F9FB024138EFC00F7FE01 /* LCDefaultWebImageMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FAF24138EFC00F7FE01 /* LCDefaultWebImageMediator.m */; };
+		798F9FB424138FE700F7FE01 /* LCCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FB324138FE700F7FE01 /* LCCollectionView.m */; };
+		798F9FB72413900C00F7FE01 /* LCCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FB62413900C00F7FE01 /* LCCollectionViewLayout.m */; };
+		798F9FBA2413905000F7FE01 /* LCContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FB92413905000F7FE01 /* LCContainerView.m */; };
 		79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF17240E84060005CFBF /* LCUserInfoModel.m */; };
 		79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF1A240E87020005CFBF /* LCTweetModel.m */; };
 		79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */; };
@@ -49,6 +53,14 @@
 		798F9FA42413581500F7FE01 /* LCContentSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCContentSectionController.m; sourceTree = "<group>"; };
 		798F9FA72413622400F7FE01 /* LCCacheUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCacheUtil.h; sourceTree = "<group>"; };
 		798F9FA82413622400F7FE01 /* LCCacheUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCacheUtil.m; sourceTree = "<group>"; };
+		798F9FAE24138EFC00F7FE01 /* LCDefaultWebImageMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDefaultWebImageMediator.h; sourceTree = "<group>"; };
+		798F9FAF24138EFC00F7FE01 /* LCDefaultWebImageMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCDefaultWebImageMediator.m; sourceTree = "<group>"; };
+		798F9FB224138FE700F7FE01 /* LCCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCollectionView.h; sourceTree = "<group>"; };
+		798F9FB324138FE700F7FE01 /* LCCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCollectionView.m; sourceTree = "<group>"; };
+		798F9FB52413900C00F7FE01 /* LCCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCollectionViewLayout.h; sourceTree = "<group>"; };
+		798F9FB62413900C00F7FE01 /* LCCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCollectionViewLayout.m; sourceTree = "<group>"; };
+		798F9FB82413905000F7FE01 /* LCContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCContainerView.h; sourceTree = "<group>"; };
+		798F9FB92413905000F7FE01 /* LCContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCContainerView.m; sourceTree = "<group>"; };
 		79B4DF16240E84060005CFBF /* LCUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUserInfoModel.h; sourceTree = "<group>"; };
 		79B4DF17240E84060005CFBF /* LCUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUserInfoModel.m; sourceTree = "<group>"; };
 		79B4DF19240E87020005CFBF /* LCTweetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetModel.h; sourceTree = "<group>"; };
@@ -127,6 +139,19 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		798F9FB124138FC800F7FE01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				798F9FB224138FE700F7FE01 /* LCCollectionView.h */,
+				798F9FB324138FE700F7FE01 /* LCCollectionView.m */,
+				798F9FB82413905000F7FE01 /* LCContainerView.h */,
+				798F9FB92413905000F7FE01 /* LCContainerView.m */,
+				798F9FB52413900C00F7FE01 /* LCCollectionViewLayout.h */,
+				798F9FB62413900C00F7FE01 /* LCCollectionViewLayout.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		79B4DF15240E83AC0005CFBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +218,9 @@
 		79B4DF3E240E9D840005CFBF /* LCPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				798F9FAE24138EFC00F7FE01 /* LCDefaultWebImageMediator.h */,
+				798F9FAF24138EFC00F7FE01 /* LCDefaultWebImageMediator.m */,
+				798F9FB124138FC800F7FE01 /* View */,
 			);
 			path = LCPhotoBrowser;
 			sourceTree = "<group>";
@@ -323,9 +351,13 @@
 				79709402240D2359004E4F60 /* ViewController.m in Sources */,
 				798F9FA92413622400F7FE01 /* LCCacheUtil.m in Sources */,
 				79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */,
+				798F9FB424138FE700F7FE01 /* LCCollectionView.m in Sources */,
+				798F9FB72413900C00F7FE01 /* LCCollectionViewLayout.m in Sources */,
 				79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */,
+				798F9FB024138EFC00F7FE01 /* LCDefaultWebImageMediator.m in Sources */,
 				79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */,
 				79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */,
+				798F9FBA2413905000F7FE01 /* LCContainerView.m in Sources */,
 				798F9FA224134DBD00F7FE01 /* LCTweetViewModel.m in Sources */,
 				79B4DF3A240E9CAF0005CFBF /* LCContentCell.m in Sources */,
 				798F9FA52413581500F7FE01 /* LCContentSectionController.m in Sources */,
