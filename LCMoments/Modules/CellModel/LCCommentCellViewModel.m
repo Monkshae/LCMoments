@@ -34,6 +34,7 @@
         } range:NSMakeRange(0, lastAttr.length)];
         [fisrtAttr appendAttributedString:lastAttr];
         _commentAttributedString = [fisrtAttr mutableCopy];
+        [self calculateCellHeight];
     }
     return self;
 }

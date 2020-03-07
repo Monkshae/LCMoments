@@ -40,7 +40,7 @@
 }
 
 - (void)feedCellWithViewModel:(LCCommentCellViewModel *)viewModel {
-    
+    self.commentLabel.attributedText = viewModel.commentAttributedString;
 }
 
 @end

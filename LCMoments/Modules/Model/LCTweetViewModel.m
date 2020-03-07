@@ -25,7 +25,7 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
 
 @property (nonatomic, strong) NSArray *dataArray;
 
-@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
+//@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
 
 @end
 
@@ -64,21 +64,21 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
           } else {
               [SVProgressHUD dismiss];
               NSArray <LCTweetModel *> *tweets = [LCTweetModel mj_objectArrayWithKeyValuesArray:responseObject];
-              
-              NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:tweets.count];
-              NSMutableArray *commentArray = [NSMutableArray arrayWithCapacity:tweets.count];
-              
+//              NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:tweets.count];
+//              NSMutableArray *commentArray = [NSMutableArray arrayWithCapacity:tweets.count];
+              NSMutableArray *tweetList = [[NSMutableArray alloc]init];
+
               [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                   LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
                   LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
-
                   if (obj.sender.username.length > 0) {
-                     [contentArray addObject:contentSectionViewModel];
-//                     [commentArray addObject:commentSectionViewModel];
+                     [tweetList addObject:contentSectionViewModel];
+                     [tweetList addObject:commentSectionViewModel];
                   }
               }];
-              self.tweetList = [contentArray  mutableCopy];
-              successBlock(self.tweetList);
+              
+//              self.tweetList = [contentArray  mutableCopy];
+              successBlock(tweetList);
           }
       }];
       [dataTask resume];

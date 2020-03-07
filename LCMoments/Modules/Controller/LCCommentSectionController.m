@@ -27,7 +27,7 @@
 - (CGSize)sizeForItemAtIndex:(NSInteger)index {
     
     LCCommentCellViewModel *cellViewModel = [self.viewModel cellViewModelAtIndex:index];
-    return CGSizeMake(SCREEN_WIDTH - 2 * kCellPadding - 42 - kCellItemInset, self.viewModel.commentCount ? cellViewModel.cellHeight : 0);
+    return CGSizeMake(SCREEN_WIDTH - 2 * kCellPadding - 42 - kCellItemInset, cellViewModel.cellHeight);
 }
 
 - (UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index {

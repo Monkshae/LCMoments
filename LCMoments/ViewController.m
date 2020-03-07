@@ -10,6 +10,9 @@
 #import "LCTweetViewModel.h"
 #import "LCDefine.h"
 #import "LCContentSectionController.h"
+#import "LCCommentSectionController.h"
+#import "LCContentSectionViewModel.h"
+#import "LCCommentSectionViewModel.h"
 //#import <AFNetworking/AFNetworking.h>
 //#import <SVProgressHUD/SVProgressHUD.h>
 //#import <MJExtension/MJExtension.h>
@@ -35,14 +38,6 @@
 
 @implementation ViewController
 
-static void extracted(ViewController *object, ViewController *const __weak weakSelf) {
-    [object.viewModel requestTweetsWithSuccessBlock:^(NSArray<LCContentCellViewModel *> * _Nonnull list) {
-        //        weakSelf.tweetList = [list mutableCopy];
-        weakSelf.dataArray = [list mutableCopy];
-        [object.adapter reloadDataWithCompletion:nil];
-    }];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -60,7 +55,10 @@ static void extracted(ViewController *object, ViewController *const __weak weakS
     self.viewModel = [[LCTweetViewModel alloc]init];
     [self.viewModel requestUserInfo];
     __weak typeof(self) weakSelf = self;
-    extracted(self, weakSelf);
+    [self.viewModel requestTweetsWithSuccessBlock:^(NSArray<LCContentCellViewModel *> * _Nonnull list) {
+        weakSelf.dataArray = [list mutableCopy];
+        [self.adapter reloadDataWithCompletion:nil];
+    }];
 }
 
 
@@ -69,7 +67,13 @@ static void extracted(ViewController *object, ViewController *const __weak weakS
 }
 
 - (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {
-    IGListSectionController *vc = [LCContentSectionController new];
+    IGListSectionController *vc = nil;
+    if ([object isKindOfClass:[LCContentSectionViewModel class]]) {
+        vc =  [LCContentSectionController new];
+    } else if ([object isKindOfClass:[LCCommentSectionViewModel class]]) {
+        vc =  [LCCommentSectionController new];
+        vc.inset = UIEdgeInsetsMake(-2, kCellPadding + 40 + kCellItemInset, 0, kCellPadding);
+    }
     return vc;
 }
 
