@@ -13,6 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCContentCellViewModel : NSObject<IGListDiffable>
 
+@property(nonatomic, readonly) CGFloat picHeight;
+@property(nonatomic, readonly) CGFloat cellHeight;
+
+- (instancetype)initWithTweetModel:(LCTweetModel *)model;
+
+- (void)calculateCellHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

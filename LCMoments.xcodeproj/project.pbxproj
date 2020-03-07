@@ -15,16 +15,11 @@
 		7970940D240D235C004E4F60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970940C240D235C004E4F60 /* main.m */; };
 		7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970945E240D2F49004E4F60 /* LCNavgationView.m */; };
 		79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79709462240D3812004E4F60 /* LCHeaderRefreshView.m */; };
+		798F9FA224134DBD00F7FE01 /* LCTweetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA124134DBD00F7FE01 /* LCTweetViewModel.m */; };
 		79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF17240E84060005CFBF /* LCUserInfoModel.m */; };
 		79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF1A240E87020005CFBF /* LCTweetModel.m */; };
-		79B4DF20240E995B0005CFBF /* LCDiscoverSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF1F240E995B0005CFBF /* LCDiscoverSectionModel.m */; };
-		79B4DF23240E996D0005CFBF /* LCCommentSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF22240E996D0005CFBF /* LCCommentSectionModel.m */; };
-		79B4DF26240E99A10005CFBF /* LCAvatarCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF25240E99A10005CFBF /* LCAvatarCellViewModel.m */; };
 		79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */; };
-		79B4DF2C240E9BC40005CFBF /* LCCommentCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF2B240E9BC40005CFBF /* LCCommentCellViewModel.m */; };
-		79B4DF37240E9C950005CFBF /* LCAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF36240E9C950005CFBF /* LCAvatarCell.m */; };
 		79B4DF3A240E9CAF0005CFBF /* LCContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF39240E9CAF0005CFBF /* LCContentCell.m */; };
-		79B4DF3D240E9CC20005CFBF /* LCCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF3C240E9CC20005CFBF /* LCCommentCell.m */; };
 		A6C894150C622F04CEF4242A /* Pods_LCMoments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1A95FB42C3C2F085EE8D17 /* Pods_LCMoments.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,26 +41,16 @@
 		79709460240D2FDD004E4F60 /* LCDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDefine.h; sourceTree = "<group>"; };
 		79709461240D3812004E4F60 /* LCHeaderRefreshView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCHeaderRefreshView.h; sourceTree = "<group>"; };
 		79709462240D3812004E4F60 /* LCHeaderRefreshView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHeaderRefreshView.m; sourceTree = "<group>"; };
+		798F9FA024134DBD00F7FE01 /* LCTweetViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetViewModel.h; sourceTree = "<group>"; };
+		798F9FA124134DBD00F7FE01 /* LCTweetViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCTweetViewModel.m; sourceTree = "<group>"; };
 		79B4DF16240E84060005CFBF /* LCUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUserInfoModel.h; sourceTree = "<group>"; };
 		79B4DF17240E84060005CFBF /* LCUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUserInfoModel.m; sourceTree = "<group>"; };
 		79B4DF19240E87020005CFBF /* LCTweetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetModel.h; sourceTree = "<group>"; };
 		79B4DF1A240E87020005CFBF /* LCTweetModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCTweetModel.m; sourceTree = "<group>"; };
-		79B4DF1E240E995B0005CFBF /* LCDiscoverSectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDiscoverSectionModel.h; sourceTree = "<group>"; };
-		79B4DF1F240E995B0005CFBF /* LCDiscoverSectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCDiscoverSectionModel.m; sourceTree = "<group>"; };
-		79B4DF21240E996D0005CFBF /* LCCommentSectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentSectionModel.h; sourceTree = "<group>"; };
-		79B4DF22240E996D0005CFBF /* LCCommentSectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentSectionModel.m; sourceTree = "<group>"; };
-		79B4DF24240E99A10005CFBF /* LCAvatarCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCAvatarCellViewModel.h; sourceTree = "<group>"; };
-		79B4DF25240E99A10005CFBF /* LCAvatarCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCAvatarCellViewModel.m; sourceTree = "<group>"; };
 		79B4DF27240E99B30005CFBF /* LCContentCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCContentCellViewModel.h; sourceTree = "<group>"; };
 		79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCContentCellViewModel.m; sourceTree = "<group>"; };
-		79B4DF2A240E9BC40005CFBF /* LCCommentCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentCellViewModel.h; sourceTree = "<group>"; };
-		79B4DF2B240E9BC40005CFBF /* LCCommentCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentCellViewModel.m; sourceTree = "<group>"; };
-		79B4DF35240E9C950005CFBF /* LCAvatarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCAvatarCell.h; sourceTree = "<group>"; };
-		79B4DF36240E9C950005CFBF /* LCAvatarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCAvatarCell.m; sourceTree = "<group>"; };
 		79B4DF38240E9CAF0005CFBF /* LCContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCContentCell.h; sourceTree = "<group>"; };
 		79B4DF39240E9CAF0005CFBF /* LCContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCContentCell.m; sourceTree = "<group>"; };
-		79B4DF3B240E9CC20005CFBF /* LCCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentCell.h; sourceTree = "<group>"; };
-		79B4DF3C240E9CC20005CFBF /* LCCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentCell.m; sourceTree = "<group>"; };
 		C287E3ADFF4D70DB4D2E0F50 /* Pods-LCMoments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCMoments.debug.xcconfig"; path = "Target Support Files/Pods-LCMoments/Pods-LCMoments.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +114,8 @@
 		79B4DF15240E83AC0005CFBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				798F9FA024134DBD00F7FE01 /* LCTweetViewModel.h */,
+				798F9FA124134DBD00F7FE01 /* LCTweetViewModel.m */,
 				79B4DF16240E84060005CFBF /* LCUserInfoModel.h */,
 				79B4DF17240E84060005CFBF /* LCUserInfoModel.m */,
 				79B4DF19240E87020005CFBF /* LCTweetModel.h */,
@@ -140,25 +127,10 @@
 		79B4DF1C240E968E0005CFBF /* CellModel */ = {
 			isa = PBXGroup;
 			children = (
-				79B4DF24240E99A10005CFBF /* LCAvatarCellViewModel.h */,
-				79B4DF25240E99A10005CFBF /* LCAvatarCellViewModel.m */,
 				79B4DF27240E99B30005CFBF /* LCContentCellViewModel.h */,
 				79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */,
-				79B4DF2A240E9BC40005CFBF /* LCCommentCellViewModel.h */,
-				79B4DF2B240E9BC40005CFBF /* LCCommentCellViewModel.m */,
 			);
 			path = CellModel;
-			sourceTree = "<group>";
-		};
-		79B4DF1D240E96A50005CFBF /* SectionModel */ = {
-			isa = PBXGroup;
-			children = (
-				79B4DF1E240E995B0005CFBF /* LCDiscoverSectionModel.h */,
-				79B4DF1F240E995B0005CFBF /* LCDiscoverSectionModel.m */,
-				79B4DF21240E996D0005CFBF /* LCCommentSectionModel.h */,
-				79B4DF22240E996D0005CFBF /* LCCommentSectionModel.m */,
-			);
-			path = SectionModel;
 			sourceTree = "<group>";
 		};
 		79B4DF31240E9C340005CFBF /* Modules */ = {
@@ -166,7 +138,6 @@
 			children = (
 				79B4DF33240E9C560005CFBF /* Controller */,
 				79B4DF32240E9C4E0005CFBF /* View */,
-				79B4DF1D240E96A50005CFBF /* SectionModel */,
 				79B4DF1C240E968E0005CFBF /* CellModel */,
 				79B4DF15240E83AC0005CFBF /* Model */,
 			);
@@ -195,12 +166,8 @@
 		79B4DF34240E9C6A0005CFBF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				79B4DF35240E9C950005CFBF /* LCAvatarCell.h */,
-				79B4DF36240E9C950005CFBF /* LCAvatarCell.m */,
 				79B4DF38240E9CAF0005CFBF /* LCContentCell.h */,
 				79B4DF39240E9CAF0005CFBF /* LCContentCell.m */,
-				79B4DF3B240E9CC20005CFBF /* LCCommentCell.h */,
-				79B4DF3C240E9CC20005CFBF /* LCCommentCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -336,20 +303,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				79709402240D2359004E4F60 /* ViewController.m in Sources */,
-				79B4DF3D240E9CC20005CFBF /* LCCommentCell.m in Sources */,
-				79B4DF2C240E9BC40005CFBF /* LCCommentCellViewModel.m in Sources */,
 				79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */,
 				79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */,
 				79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */,
 				79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */,
+				798F9FA224134DBD00F7FE01 /* LCTweetViewModel.m in Sources */,
 				79B4DF3A240E9CAF0005CFBF /* LCContentCell.m in Sources */,
-				79B4DF26240E99A10005CFBF /* LCAvatarCellViewModel.m in Sources */,
 				7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */,
-				79B4DF37240E9C950005CFBF /* LCAvatarCell.m in Sources */,
 				797093FC240D2359004E4F60 /* AppDelegate.m in Sources */,
-				79B4DF23240E996D0005CFBF /* LCCommentSectionModel.m in Sources */,
 				7970940D240D235C004E4F60 /* main.m in Sources */,
-				79B4DF20240E995B0005CFBF /* LCDiscoverSectionModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

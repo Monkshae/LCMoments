@@ -1,8 +1,8 @@
 //
-//  LCDiscoverSectionModel.h
+//  LCTweetViewModel.h
 //  LCMoments
 //
-//  Created by Richard on 2020/3/3.
+//  Created by Richard on 2020/3/7.
 //  Copyright © 2020 Richard. All rights reserved.
 //
 
@@ -11,7 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LCDiscoverSectionModel : NSObject<IGListDiffable>
+@interface LCTweetViewModel : NSObject
+
+@property (nonatomic, readonly) NSArray <LCTweetModel *> *tweetList;
 
 @end
 
