@@ -12,7 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LCContentSectionViewModel : NSObject
+@interface LCContentSectionViewModel : NSObject<IGListDiffable>
+
+@property (nonatomic, readonly) NSInteger contentCount;
 
 - (instancetype)initWithTweetModel:(LCTweetModel *)model;
 

@@ -25,6 +25,7 @@
             [temp addObject:cellViewModel];
         }];
         self.dataArray = [temp mutableCopy];
+        self.commentCount = model.comments.count;
     }
     return self;
 }

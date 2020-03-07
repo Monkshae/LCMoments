@@ -27,11 +27,21 @@
 
 //@property (nonatomic, strong) AFURLSessionManager *manager;
 //@property (nonatomic, strong) LCUserInfoModel *userInfo;
-@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
+
+@property (nonatomic, strong) NSArray * dataArray;
+//@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
 
 @end
 
 @implementation ViewController
+
+static void extracted(ViewController *object, ViewController *const __weak weakSelf) {
+    [object.viewModel requestTweetsWithSuccessBlock:^(NSArray<LCContentCellViewModel *> * _Nonnull list) {
+        //        weakSelf.tweetList = [list mutableCopy];
+        weakSelf.dataArray = [list mutableCopy];
+        [object.adapter reloadDataWithCompletion:nil];
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,15 +60,12 @@
     self.viewModel = [[LCTweetViewModel alloc]init];
     [self.viewModel requestUserInfo];
     __weak typeof(self) weakSelf = self;
-    [self.viewModel requestTweetsWithSuccessBlock:^(NSArray<LCContentCellViewModel *> * _Nonnull list) {
-        weakSelf.tweetList = [list mutableCopy];
-        [self.adapter reloadDataWithCompletion:nil];
-    }];
+    extracted(self, weakSelf);
 }
 
 
 - (NSArray<id <IGListDiffable>> *)objectsForListAdapter:(IGListAdapter *)listAdapter {
-    return self.tweetList;
+    return self.dataArray;
 }
 
 - (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {

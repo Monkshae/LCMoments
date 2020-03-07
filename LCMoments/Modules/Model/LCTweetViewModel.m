@@ -12,7 +12,8 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "LCUserInfoModel.h"
 #import "LCTweetModel.h"
-#import "LCCommentCellViewModel.h"
+#import "LCCommentSectionViewModel.h"
+#import "LCContentSectionViewModel.h"
 
 static NSString * const kUserInfoUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/jsmith.json";
 static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/tweets.json";
@@ -54,7 +55,7 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
       [dataTask resume];
 }
 
-- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray<LCContentCellViewModel *> *))successBlock {
+- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray *))successBlock {
       NSURL *URL = [NSURL URLWithString:kTweetsUrl];
       NSURLRequest *request = [NSURLRequest requestWithURL:URL];
       NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
@@ -66,25 +67,16 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
               
               NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:tweets.count];
               NSMutableArray *commentArray = [NSMutableArray arrayWithCapacity:tweets.count];
-
+              
               [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                  LCContentCellViewModel *contentCellViewModel = [[LCContentCellViewModel alloc]initWithTweetModel:obj];
+                  LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
+                  LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
 
-                  
-                  NSMutableArray *comments = [NSMutableArray arrayWithCapacity:obj.comments.count];
-                  [obj.comments enumerateObjectsUsingBlock:^(LCCommentModel * _Nonnull comment, NSUInteger idx, BOOL * _Nonnull stop) {
-                      LCCommentCellViewModel *commentCellViewModel = [[LCCommentCellViewModel alloc]initWithCommentModel:comment];
-                      [comments addObject: commentCellViewModel];
-                  }];
                   if (obj.sender.username.length > 0) {
-                     [contentArray addObject:contentCellViewModel];
-                     [commentArray addObject:comments];
+                     [contentArray addObject:contentSectionViewModel];
+//                     [commentArray addObject:commentSectionViewModel];
                   }
               }];
-              
-              
-              
-              
               self.tweetList = [contentArray  mutableCopy];
               successBlock(self.tweetList);
           }

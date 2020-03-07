@@ -260,10 +260,10 @@
 		798F9FF22413B2D100F7FE01 /* SectionModel */ = {
 			isa = PBXGroup;
 			children = (
-				798F9FF32413B32B00F7FE01 /* LCCommentSectionViewModel.h */,
-				798F9FF42413B32B00F7FE01 /* LCCommentSectionViewModel.m */,
 				798F9FF92413C26900F7FE01 /* LCContentSectionViewModel.h */,
 				798F9FFA2413C26900F7FE01 /* LCContentSectionViewModel.m */,
+				798F9FF32413B32B00F7FE01 /* LCCommentSectionViewModel.h */,
+				798F9FF42413B32B00F7FE01 /* LCCommentSectionViewModel.m */,
 			);
 			path = SectionModel;
 			sourceTree = "<group>";

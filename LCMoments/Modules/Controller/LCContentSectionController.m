@@ -7,29 +7,30 @@
 //
 
 #import "LCContentSectionController.h"
-#import "LCContentCellViewModel.h"
+#import "LCContentSectionViewModel.h"
 #import "LCContentCell.h"
 
 @interface LCContentSectionController ()
 
-@property(nonatomic, strong) LCContentCellViewModel *viewModel;
+@property(nonatomic, strong) LCContentSectionViewModel *viewModel;
 
 @end
 
 @implementation LCContentSectionController
 
 - (NSInteger)numberOfItems {
-    return 1;
+    return self.viewModel.contentCount;
 }
 
 - (CGSize)sizeForItemAtIndex:(NSInteger)index {
-        
-    return CGSizeMake(self.collectionContext.containerSize.width, self.viewModel.cellHeight);
+    LCContentCellViewModel *cellViewModel = [self.viewModel cellViewModelAtIndex:index];
+    return CGSizeMake(self.collectionContext.containerSize.width, cellViewModel.cellHeight);
 }
 
 - (UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index {
     LCContentCell *cell = [self.collectionContext dequeueReusableCellOfClass:LCContentCell.class forSectionController:self atIndex:index];
-    [cell feedCellWithViewModel:self.viewModel];
+    LCContentCellViewModel *cellViewModel = [self.viewModel cellViewModelAtIndex:index];
+    [cell feedCellWithViewModel:cellViewModel];
     return cell;
 }
 

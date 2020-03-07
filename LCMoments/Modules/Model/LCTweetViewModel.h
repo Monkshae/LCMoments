@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestUserInfo;
 
-- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray<LCContentCellViewModel *> *))successBlock;
+- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray*))successBlock;
 
 @end
 
