@@ -6,10 +6,10 @@
 //  Copyright © 2020 Richard. All rights reserved.
 //
 
-#import "LCNavgationView.h"
+#import "LCNavigationView.h"
 #import "LCDefine.h"
 
-@implementation LCNavgationView
+@implementation LCNavigationView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {

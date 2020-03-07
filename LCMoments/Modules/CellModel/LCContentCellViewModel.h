@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithTweetModel:(LCTweetModel *)model;
 
-- (void)calculateCellHeight;
+//- (void)calculateCellHeight;
 
 @end
 

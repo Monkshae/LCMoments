@@ -12,6 +12,7 @@
 #import <YYKit/YYKit.h>
 #import <IGListKit/IGListKit.h>
 #import "LCTweetModel.h"
+#import "LCUserInfoModel.h"
 #import <SDWebImage/SDWebImage.h>
 #import <Masonry/Masonry.h>
 

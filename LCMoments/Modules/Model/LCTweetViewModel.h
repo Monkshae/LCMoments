@@ -6,7 +6,7 @@
 //  Copyright © 2020 Richard. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "LCDefine.h"
 #import "LCContentCellViewModel.h"
 
@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //@property (nonatomic, readonly) NSArray <LCContentCellViewModel *> *tweetList;
 
-- (void)requestUserInfo;
+- (void)requestUserInfo:(void(^)(LCUserInfoModel *infoModel))successBlock faileBlock:(void(^)(NSError * _Nullable error))faileBlock;
 
-- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray*))successBlock;
+- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray *list))successBlock faileBlock:(void(^)(NSError * _Nullable error))faileBlock;
 
 @end
 

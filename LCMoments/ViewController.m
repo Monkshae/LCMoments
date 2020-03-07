@@ -13,26 +13,24 @@
 #import "LCCommentSectionController.h"
 #import "LCContentSectionViewModel.h"
 #import "LCCommentSectionViewModel.h"
-//#import <AFNetworking/AFNetworking.h>
-//#import <SVProgressHUD/SVProgressHUD.h>
-//#import <MJExtension/MJExtension.h>
-//#import "LCUserInfoModel.h"
-//#import "LCTweetModel.h"
-
-//static NSString * const kUserInfoUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/jsmith.json";
-//static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/tweets.json";
+#import "LCNavigationView.h"
+#import "LCHeaderRefreshView.h"
+#import "LCTweetModel.h"
+#import "LCHeadImageSectionViewModel.h"
+#import "LCHeadImageSectionControler.h"
 
 @interface ViewController ()<IGListAdapterDataSource, UIScrollViewDelegate>
 
-@property (nonatomic, strong) LCTweetViewModel *viewModel;
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) IGListAdapter *adapter;
+@property(nonatomic, strong) UICollectionView *collectionView;
+@property(nonatomic, strong) LCNavigationView *navView;
+@property(nonatomic, strong) IGListAdapter *adapter;
 
-//@property (nonatomic, strong) AFURLSessionManager *manager;
-//@property (nonatomic, strong) LCUserInfoModel *userInfo;
+@property (nonatomic, strong) LCUserInfoModel *userInfo;
+@property(nonatomic, strong) LCTweetViewModel *viewModel;
+@property(nonatomic, assign) CGFloat contentOffsetY;
+@property(nonatomic, strong) NSArray *dataArray;
 
-@property (nonatomic, strong) NSArray * dataArray;
-//@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
+@property(nonatomic, strong) NSArray<LCTweetModel*> *tweets;
 
 @end
 
@@ -51,14 +49,49 @@
     }];
     self.adapter.collectionView = self.collectionView;
     self.adapter.dataSource = self;
+    self.adapter.scrollViewDelegate = self;
+
             
     self.viewModel = [[LCTweetViewModel alloc]init];
-    [self.viewModel requestUserInfo];
     __weak typeof(self) weakSelf = self;
-    [self.viewModel requestTweetsWithSuccessBlock:^(NSArray<LCContentCellViewModel *> * _Nonnull list) {
-        weakSelf.dataArray = [list mutableCopy];
-        [self.adapter reloadDataWithCompletion:nil];
+    dispatch_group_t group = dispatch_group_create();
+
+    dispatch_group_enter(group);
+    [self.viewModel requestUserInfo:^(LCUserInfoModel * _Nonnull infoModel) {
+        weakSelf.userInfo = infoModel;
+        dispatch_group_leave(group);
+    } faileBlock:^(NSError * _Nullable error) {
+        dispatch_group_leave(group);
     }];
+    
+    dispatch_group_enter(group);
+    [self.viewModel requestTweetsWithSuccessBlock:^(NSArray * _Nonnull list) {
+        weakSelf.tweets = [list mutableCopy];
+        dispatch_group_leave(group);
+    } faileBlock:^(NSError * _Nullable error) {
+        dispatch_group_leave(group);
+    }];
+    
+    self.navigationController.navigationBarHidden = YES;
+    self.collectionView.mj_header = [LCHeaderRefreshView headerWithRefreshingBlock:^{
+        [self.collectionView.mj_header endRefreshing];
+    }];
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        NSMutableArray *tweetList = [[NSMutableArray alloc]init];
+        [self.tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
+            LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
+            LCHeadImageSectionViewModel *headImageSectionViewModel = [[LCHeadImageSectionViewModel alloc]initWithUserInfoModel:self.userInfo section:idx];
+            if (obj.sender.username.length > 0) {
+                [tweetList addObject:headImageSectionViewModel];
+                [tweetList addObject:contentSectionViewModel];
+                [tweetList addObject:commentSectionViewModel];
+            }
+       }];
+        self.dataArray = [tweetList mutableCopy];
+        [self.adapter reloadDataWithCompletion:nil];
+    });
 }
 
 
@@ -73,6 +106,8 @@
     } else if ([object isKindOfClass:[LCCommentSectionViewModel class]]) {
         vc =  [LCCommentSectionController new];
         vc.inset = UIEdgeInsetsMake(-2, kCellPadding + 40 + kCellItemInset, 0, kCellPadding);
+    } else if([object isKindOfClass:[LCHeadImageSectionViewModel copy]]){
+        vc = [LCHeadImageSectionControler new];
     }
     return vc;
 }
@@ -85,6 +120,36 @@
 }
 
 #pragma mark - Lazying loading
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    self.collectionView.frame = self.view.frame;
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    self.contentOffsetY = scrollView.contentOffset.y;
+    self.navView.navV.alpha = self.contentOffsetY / 150;
+    self.navView.navLabel.alpha = self.contentOffsetY / 150;
+
+    if (self.contentOffsetY / 150 > 0.6) {
+        self.navView.isScrollUp = YES;
+    } else {
+        self.navView.isScrollUp = NO;
+    }
+}
+
+- (LCNavigationView *)navView {
+    if (!_navView) {
+        _navView = [[LCNavigationView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, NAV_HEIGHT)];
+    }
+    return _navView;
+}
+
+
+#pragma mark - Lazying loading
+
 - (IGListAdapter *)adapter {
     if (!_adapter) {
         _adapter = [[IGListAdapter alloc] initWithUpdater:[IGListAdapterUpdater new] viewController:self];

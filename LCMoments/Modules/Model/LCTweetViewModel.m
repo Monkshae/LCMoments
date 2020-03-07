@@ -21,7 +21,7 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
 @interface LCTweetViewModel ()
 
 @property (nonatomic, strong) AFURLSessionManager *manager;
-@property (nonatomic, strong) LCUserInfoModel *userInfo;
+//@property (nonatomic, strong) LCUserInfoModel *userInfo;
 
 @property (nonatomic, strong) NSArray *dataArray;
 
@@ -38,47 +38,45 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
     return self;
 }
 
-- (void)requestUserInfo {
+- (void)requestUserInfo:(void (^)(LCUserInfoModel * _Nonnull))successBlock
+             faileBlock:(void (^)(NSError * _Nullable))faileBlock {
       NSURL *URL = [NSURL URLWithString:kUserInfoUrl];
       NSURLRequest *request = [NSURLRequest requestWithURL:URL];
       NSURLSessionDataTask *dataTask =[self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
           if (error) {
               [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+              faileBlock(error);
           } else {
               [SVProgressHUD dismiss];
               LCUserInfoModel *info = [LCUserInfoModel mj_objectWithKeyValues:responseObject];
-              self.userInfo = info;
-              
+              successBlock(info);
           }
-          
       }];
       [dataTask resume];
 }
 
-- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray *))successBlock {
+- (void)requestTweetsWithSuccessBlock:(void (^)(NSArray * _Nonnull))successBlock
+                           faileBlock:(void (^)(NSError * _Nullable))faileBlock {
       NSURL *URL = [NSURL URLWithString:kTweetsUrl];
       NSURLRequest *request = [NSURLRequest requestWithURL:URL];
       NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
           if (error) {
               [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+              faileBlock(error);
           } else {
               [SVProgressHUD dismiss];
               NSArray <LCTweetModel *> *tweets = [LCTweetModel mj_objectArrayWithKeyValuesArray:responseObject];
-//              NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:tweets.count];
-//              NSMutableArray *commentArray = [NSMutableArray arrayWithCapacity:tweets.count];
-              NSMutableArray *tweetList = [[NSMutableArray alloc]init];
-
-              [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                  LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
-                  LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
-                  if (obj.sender.username.length > 0) {
-                     [tweetList addObject:contentSectionViewModel];
-                     [tweetList addObject:commentSectionViewModel];
-                  }
-              }];
-              
-//              self.tweetList = [contentArray  mutableCopy];
-              successBlock(tweetList);
+//              NSMutableArray *tweetList = [[NSMutableArray alloc]init];
+//
+//              [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                  LCContentSectionViewModel *contentSectionViewModel = [[LCContentSectionViewModel alloc]initWithTweetModel:obj];
+//                  LCCommentSectionViewModel *commentSectionViewModel = [[LCCommentSectionViewModel alloc]initWithTweetModel:obj];
+//                  if (obj.sender.username.length > 0) {
+//                     [tweetList addObject:contentSectionViewModel];
+//                     [tweetList addObject:commentSectionViewModel];
+//                  }
+//              }];
+              successBlock(tweets);
           }
       }];
       [dataTask resume];

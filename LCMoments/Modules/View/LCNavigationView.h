@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LCNavgationView : UIView
+@interface LCNavigationView : UIView
 
 @property (nonatomic, strong)UIView *navV;
 @property (nonatomic, strong)UILabel *navLabel;
