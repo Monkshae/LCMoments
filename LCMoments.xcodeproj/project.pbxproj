@@ -35,6 +35,11 @@
 		798F9FE82413999000F7FE01 /* LCPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FE62413999000F7FE01 /* LCPhotoViewCell.m */; };
 		798F9FE92413999000F7FE01 /* LCPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798F9FE72413999000F7FE01 /* LCPhotoViewCell.xib */; };
 		798F9FEB2413AC0F00F7FE01 /* girl.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 798F9FEA2413AC0E00F7FE01 /* girl.jpeg */; };
+		798F9FEE2413AE9D00F7FE01 /* LCCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FED2413AE9D00F7FE01 /* LCCommentCell.m */; };
+		798F9FF12413AEDF00F7FE01 /* LCCommentCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FF02413AEDF00F7FE01 /* LCCommentCellViewModel.m */; };
+		798F9FF52413B32B00F7FE01 /* LCCommentSectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FF42413B32B00F7FE01 /* LCCommentSectionViewModel.m */; };
+		798F9FF82413BCF000F7FE01 /* LCCommentSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FF72413BCF000F7FE01 /* LCCommentSectionController.m */; };
+		798F9FFB2413C26900F7FE01 /* LCContentSectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FFA2413C26900F7FE01 /* LCContentSectionViewModel.m */; };
 		79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF17240E84060005CFBF /* LCUserInfoModel.m */; };
 		79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF1A240E87020005CFBF /* LCTweetModel.m */; };
 		79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */; };
@@ -102,6 +107,16 @@
 		798F9FE62413999000F7FE01 /* LCPhotoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPhotoViewCell.m; sourceTree = "<group>"; };
 		798F9FE72413999000F7FE01 /* LCPhotoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LCPhotoViewCell.xib; sourceTree = "<group>"; };
 		798F9FEA2413AC0E00F7FE01 /* girl.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = girl.jpeg; sourceTree = "<group>"; };
+		798F9FEC2413AE9D00F7FE01 /* LCCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentCell.h; sourceTree = "<group>"; };
+		798F9FED2413AE9D00F7FE01 /* LCCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentCell.m; sourceTree = "<group>"; };
+		798F9FEF2413AEDF00F7FE01 /* LCCommentCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentCellViewModel.h; sourceTree = "<group>"; };
+		798F9FF02413AEDF00F7FE01 /* LCCommentCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentCellViewModel.m; sourceTree = "<group>"; };
+		798F9FF32413B32B00F7FE01 /* LCCommentSectionViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentSectionViewModel.h; sourceTree = "<group>"; };
+		798F9FF42413B32B00F7FE01 /* LCCommentSectionViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentSectionViewModel.m; sourceTree = "<group>"; };
+		798F9FF62413BCF000F7FE01 /* LCCommentSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCommentSectionController.h; sourceTree = "<group>"; };
+		798F9FF72413BCF000F7FE01 /* LCCommentSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCommentSectionController.m; sourceTree = "<group>"; };
+		798F9FF92413C26900F7FE01 /* LCContentSectionViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCContentSectionViewModel.h; sourceTree = "<group>"; };
+		798F9FFA2413C26900F7FE01 /* LCContentSectionViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCContentSectionViewModel.m; sourceTree = "<group>"; };
 		79B4DF16240E84060005CFBF /* LCUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUserInfoModel.h; sourceTree = "<group>"; };
 		79B4DF17240E84060005CFBF /* LCUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUserInfoModel.m; sourceTree = "<group>"; };
 		79B4DF19240E87020005CFBF /* LCTweetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetModel.h; sourceTree = "<group>"; };
@@ -242,6 +257,17 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
+		798F9FF22413B2D100F7FE01 /* SectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				798F9FF32413B32B00F7FE01 /* LCCommentSectionViewModel.h */,
+				798F9FF42413B32B00F7FE01 /* LCCommentSectionViewModel.m */,
+				798F9FF92413C26900F7FE01 /* LCContentSectionViewModel.h */,
+				798F9FFA2413C26900F7FE01 /* LCContentSectionViewModel.m */,
+			);
+			path = SectionModel;
+			sourceTree = "<group>";
+		};
 		79B4DF15240E83AC0005CFBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +286,8 @@
 			children = (
 				79B4DF27240E99B30005CFBF /* LCContentCellViewModel.h */,
 				79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */,
+				798F9FEF2413AEDF00F7FE01 /* LCCommentCellViewModel.h */,
+				798F9FF02413AEDF00F7FE01 /* LCCommentCellViewModel.m */,
 			);
 			path = CellModel;
 			sourceTree = "<group>";
@@ -267,6 +295,7 @@
 		79B4DF31240E9C340005CFBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				798F9FF22413B2D100F7FE01 /* SectionModel */,
 				79B4DF33240E9C560005CFBF /* Controller */,
 				79B4DF32240E9C4E0005CFBF /* View */,
 				79B4DF1C240E968E0005CFBF /* CellModel */,
@@ -298,6 +327,8 @@
 			children = (
 				798F9FA32413581500F7FE01 /* LCContentSectionController.h */,
 				798F9FA42413581500F7FE01 /* LCContentSectionController.m */,
+				798F9FF62413BCF000F7FE01 /* LCCommentSectionController.h */,
+				798F9FF72413BCF000F7FE01 /* LCCommentSectionController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -307,6 +338,8 @@
 			children = (
 				79B4DF38240E9CAF0005CFBF /* LCContentCell.h */,
 				79B4DF39240E9CAF0005CFBF /* LCContentCell.m */,
+				798F9FEC2413AE9D00F7FE01 /* LCCommentCell.h */,
+				798F9FED2413AE9D00F7FE01 /* LCCommentCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -452,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79709402240D2359004E4F60 /* ViewController.m in Sources */,
+				798F9FFB2413C26900F7FE01 /* LCContentSectionViewModel.m in Sources */,
 				798F9FE1241395F000F7FE01 /* LCTools.m in Sources */,
 				798F9FA92413622400F7FE01 /* LCCacheUtil.m in Sources */,
 				79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */,
@@ -465,6 +499,8 @@
 				79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */,
 				798F9FC8241391BD00F7FE01 /* LCInteractionProfile.m in Sources */,
 				79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */,
+				798F9FF12413AEDF00F7FE01 /* LCCommentCellViewModel.m in Sources */,
+				798F9FF52413B32B00F7FE01 /* LCCommentSectionViewModel.m in Sources */,
 				798F9FE42413990000F7FE01 /* LCPhotoView.m in Sources */,
 				798F9FD32413944100F7FE01 /* LCDataMediator.m in Sources */,
 				798F9FBA2413905000F7FE01 /* LCContainerView.m in Sources */,
@@ -474,7 +510,9 @@
 				7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */,
 				798F9FE82413999000F7FE01 /* LCPhotoViewCell.m in Sources */,
 				798F9FCB2413920900F7FE01 /* LCImageLayout.m in Sources */,
+				798F9FF82413BCF000F7FE01 /* LCCommentSectionController.m in Sources */,
 				798F9FC12413912300F7FE01 /* LCImageScrollView.m in Sources */,
+				798F9FEE2413AE9D00F7FE01 /* LCCommentCell.m in Sources */,
 				797093FC240D2359004E4F60 /* AppDelegate.m in Sources */,
 				798F9FBE241390F000F7FE01 /* LCImageCell.m in Sources */,
 				7970940D240D235C004E4F60 /* main.m in Sources */,

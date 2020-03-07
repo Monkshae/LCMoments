@@ -12,6 +12,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "LCUserInfoModel.h"
 #import "LCTweetModel.h"
+#import "LCCommentCellViewModel.h"
 
 static NSString * const kUserInfoUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/jsmith.json";
 static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/tweets.json";
@@ -20,6 +21,9 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
 
 @property (nonatomic, strong) AFURLSessionManager *manager;
 @property (nonatomic, strong) LCUserInfoModel *userInfo;
+
+@property (nonatomic, strong) NSArray *dataArray;
+
 @property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
 
 @end
@@ -60,14 +64,28 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
               [SVProgressHUD dismiss];
               NSArray <LCTweetModel *> *tweets = [LCTweetModel mj_objectArrayWithKeyValuesArray:responseObject];
               
-              NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:tweets.count];
+              NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:tweets.count];
+              NSMutableArray *commentArray = [NSMutableArray arrayWithCapacity:tweets.count];
+
               [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                  LCContentCellViewModel *cellViewModel = [[LCContentCellViewModel alloc]initWithTweetModel:obj];
+                  LCContentCellViewModel *contentCellViewModel = [[LCContentCellViewModel alloc]initWithTweetModel:obj];
+
+                  
+                  NSMutableArray *comments = [NSMutableArray arrayWithCapacity:obj.comments.count];
+                  [obj.comments enumerateObjectsUsingBlock:^(LCCommentModel * _Nonnull comment, NSUInteger idx, BOOL * _Nonnull stop) {
+                      LCCommentCellViewModel *commentCellViewModel = [[LCCommentCellViewModel alloc]initWithCommentModel:comment];
+                      [comments addObject: commentCellViewModel];
+                  }];
                   if (obj.sender.username.length > 0) {
-                      [tempArray addObject:cellViewModel];
+                     [contentArray addObject:contentCellViewModel];
+                     [commentArray addObject:comments];
                   }
               }];
-              self.tweetList = [tempArray  mutableCopy];
+              
+              
+              
+              
+              self.tweetList = [contentArray  mutableCopy];
               successBlock(self.tweetList);
           }
       }];
