@@ -9,12 +9,13 @@
 #import "LCPhotoView.h"
 #import "LCPhotoViewCell.h"
 #import "LCDefine.h"
+#import "LCImageBrowser.h"
 
 @interface LCPhotoView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property(nonatomic, strong) NSMutableArray <NSString *> *dataArray;
+@property(nonatomic, strong) NSMutableArray <NSString *> *imageArray;
 @property(nonatomic, strong) UICollectionView *collectionView;
-//@property(nonatomic, strong) UICollectionViewFlowLayout *layout;
 
 @end
 
@@ -47,6 +48,11 @@
 
 - (void)feedPhotoViewWithArray:(NSArray<NSString *> *)dataArray {
     _dataArray = [dataArray mutableCopy];
+    NSMutableArray *images = [[NSMutableArray alloc]init];
+    [dataArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [images addObject:obj];
+    }];
+    _imageArray = [images mutableCopy];
     [self.collectionView reloadData];
 }
 
@@ -61,6 +67,7 @@
     LCPhotoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(LCPhotoViewCell.class) forIndexPath:indexPath];
     
     NSString *url = self.dataArray[indexPath.row];
+#warning 链接中的图片下载不下来，用本地图片代替
     [cell.photoImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"girl.jpeg"]];
     
 //    [cell.photoImage sd_setImageWithURL:[NSURL URLWithString:url] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
@@ -76,6 +83,7 @@
     return cell;
     
 }
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.dataArray.count == 1) {
         return CGSizeMake((self.bounds.size.width - 10) / 2, 180);
@@ -85,6 +93,29 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
+    [self selectedIndex:indexPath.row];
+}
+
+- (void)selectedIndex:(NSInteger)index {
+    NSMutableArray *datas = [NSMutableArray array];
+    [self.dataArray enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        LCImageData *data = [LCImageData new];
+        data.imageURL = [NSURL URLWithString:obj];
+#warning 链接中的图片下载不下来，用本地图片代替
+        data.imageName = @"girl.jpeg";
+        data.projectiveView = [self viewAtIndex:idx];
+        [datas addObject:data];
+            
+    }];
+    LCImageBrowser *browser = [LCImageBrowser new];
+    browser.dataSourceArray = datas;
+    browser.currentPage = index;
+    [browser show];
+}
+
+- (id)viewAtIndex:(NSInteger)index {
+    LCPhotoViewCell *cell = (LCPhotoViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    return cell ? cell.photoImage : nil;
 }
 
 - (UICollectionView *)collectionView {
