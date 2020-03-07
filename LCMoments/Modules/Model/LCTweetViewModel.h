@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "LCDefine.h"
+#import "LCContentCellViewModel.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LCTweetViewModel : NSObject
 
-@property (nonatomic, readonly) NSArray <LCTweetModel *> *tweetList;
+//@property (nonatomic, readonly) NSArray <LCContentCellViewModel *> *tweetList;
+
+- (void)requestUserInfo;
+
+- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray<LCContentCellViewModel *> *))successBlock;
 
 @end
 

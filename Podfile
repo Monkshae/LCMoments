@@ -7,12 +7,13 @@ target 'LCMoments' do
 
   # Pods for SilkyWXList
 
-pod 'IGListKit'
-pod 'MJExtension'
-pod 'MJRefresh'
-pod 'SDWebImage'
-pod 'YYKit'
-pod 'AFNetworking'
-pod 'SVProgressHUD'
+  pod 'IGListKit'
+  pod 'MJExtension'
+  pod 'MJRefresh'
+  pod 'SDWebImage'
+  pod 'YYKit'
+  pod 'AFNetworking'
+  pod 'SVProgressHUD'
+  pod 'Masonry'
 
 end

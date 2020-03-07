@@ -13,6 +13,7 @@
 #import <IGListKit/IGListKit.h>
 #import "LCTweetModel.h"
 #import <SDWebImage/SDWebImage.h>
+#import <Masonry/Masonry.h>
 
 #define SCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -24,5 +25,10 @@
 #define RGBACOLOR(x, a) [UIColor colorWithRed:((x>>16)&0xff)/255.0f green:((x>>8)&0xff)/255.0f blue:(x&0xff)/255.0f alpha:a]
 
 #define PHOTO_WIDTH (SCREEN_WIDTH - 156) / 3
+
+#define  kCellPadding  10.0
+#define  kCellItemInset  12.0
+#define  kCellPicInset  5.0
+
 
 #endif /* LCDefine_h */

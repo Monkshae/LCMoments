@@ -20,7 +20,7 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
 
 @property (nonatomic, strong) AFURLSessionManager *manager;
 @property (nonatomic, strong) LCUserInfoModel *userInfo;
-@property (nonatomic, strong) NSArray <LCTweetModel *> *tweetList;
+@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
 
 @end
 
@@ -28,12 +28,10 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self requestTweets];
-        [self requestUserInfo];
+
     }
     return self;
 }
-
 
 - (void)requestUserInfo {
       NSURL *URL = [NSURL URLWithString:kUserInfoUrl];
@@ -52,18 +50,26 @@ static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/n
       [dataTask resume];
 }
 
-- (void)requestTweets {
+- (void)requestTweetsWithSuccessBlock:(void(^)(NSArray<LCContentCellViewModel *> *))successBlock {
       NSURL *URL = [NSURL URLWithString:kTweetsUrl];
       NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-      NSURLSessionDataTask *dataTask =[self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+      NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
           if (error) {
               [SVProgressHUD showErrorWithStatus:error.localizedDescription];
           } else {
               [SVProgressHUD dismiss];
               NSArray <LCTweetModel *> *tweets = [LCTweetModel mj_objectArrayWithKeyValuesArray:responseObject];
-              self.tweetList = [tweets  mutableCopy];
+              
+              NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:tweets.count];
+              [tweets enumerateObjectsUsingBlock:^(LCTweetModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                  LCContentCellViewModel *cellViewModel = [[LCContentCellViewModel alloc]initWithTweetModel:obj];
+                  if (obj.sender.username.length > 0) {
+                      [tempArray addObject:cellViewModel];
+                  }
+              }];
+              self.tweetList = [tempArray  mutableCopy];
+              successBlock(self.tweetList);
           }
-          
       }];
       [dataTask resume];
 }

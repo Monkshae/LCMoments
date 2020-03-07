@@ -16,6 +16,8 @@
 		7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7970945E240D2F49004E4F60 /* LCNavgationView.m */; };
 		79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79709462240D3812004E4F60 /* LCHeaderRefreshView.m */; };
 		798F9FA224134DBD00F7FE01 /* LCTweetViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA124134DBD00F7FE01 /* LCTweetViewModel.m */; };
+		798F9FA52413581500F7FE01 /* LCContentSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA42413581500F7FE01 /* LCContentSectionController.m */; };
+		798F9FA92413622400F7FE01 /* LCCacheUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F9FA82413622400F7FE01 /* LCCacheUtil.m */; };
 		79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF17240E84060005CFBF /* LCUserInfoModel.m */; };
 		79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF1A240E87020005CFBF /* LCTweetModel.m */; };
 		79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B4DF28240E99B30005CFBF /* LCContentCellViewModel.m */; };
@@ -43,6 +45,10 @@
 		79709462240D3812004E4F60 /* LCHeaderRefreshView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCHeaderRefreshView.m; sourceTree = "<group>"; };
 		798F9FA024134DBD00F7FE01 /* LCTweetViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetViewModel.h; sourceTree = "<group>"; };
 		798F9FA124134DBD00F7FE01 /* LCTweetViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCTweetViewModel.m; sourceTree = "<group>"; };
+		798F9FA32413581500F7FE01 /* LCContentSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCContentSectionController.h; sourceTree = "<group>"; };
+		798F9FA42413581500F7FE01 /* LCContentSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCContentSectionController.m; sourceTree = "<group>"; };
+		798F9FA72413622400F7FE01 /* LCCacheUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCacheUtil.h; sourceTree = "<group>"; };
+		798F9FA82413622400F7FE01 /* LCCacheUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCacheUtil.m; sourceTree = "<group>"; };
 		79B4DF16240E84060005CFBF /* LCUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCUserInfoModel.h; sourceTree = "<group>"; };
 		79B4DF17240E84060005CFBF /* LCUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCUserInfoModel.m; sourceTree = "<group>"; };
 		79B4DF19240E87020005CFBF /* LCTweetModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCTweetModel.h; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 				79709400240D2359004E4F60 /* ViewController.h */,
 				79709401240D2359004E4F60 /* ViewController.m */,
 				79709460240D2FDD004E4F60 /* LCDefine.h */,
+				798F9FA6241361FD00F7FE01 /* Cache */,
 				79B4DF3E240E9D840005CFBF /* LCPhotoBrowser */,
 				79B4DF31240E9C340005CFBF /* Modules */,
 				79709403240D2359004E4F60 /* Main.storyboard */,
@@ -109,6 +116,15 @@
 				7970940C240D235C004E4F60 /* main.m */,
 			);
 			path = LCMoments;
+			sourceTree = "<group>";
+		};
+		798F9FA6241361FD00F7FE01 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				798F9FA72413622400F7FE01 /* LCCacheUtil.h */,
+				798F9FA82413622400F7FE01 /* LCCacheUtil.m */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		79B4DF15240E83AC0005CFBF /* Model */ = {
@@ -159,6 +175,8 @@
 		79B4DF33240E9C560005CFBF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				798F9FA32413581500F7FE01 /* LCContentSectionController.h */,
+				798F9FA42413581500F7FE01 /* LCContentSectionController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,12 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				79709402240D2359004E4F60 /* ViewController.m in Sources */,
+				798F9FA92413622400F7FE01 /* LCCacheUtil.m in Sources */,
 				79B4DF29240E99B30005CFBF /* LCContentCellViewModel.m in Sources */,
 				79B4DF18240E84060005CFBF /* LCUserInfoModel.m in Sources */,
 				79709463240D3812004E4F60 /* LCHeaderRefreshView.m in Sources */,
 				79B4DF1B240E87020005CFBF /* LCTweetModel.m in Sources */,
 				798F9FA224134DBD00F7FE01 /* LCTweetViewModel.m in Sources */,
 				79B4DF3A240E9CAF0005CFBF /* LCContentCell.m in Sources */,
+				798F9FA52413581500F7FE01 /* LCContentSectionController.m in Sources */,
 				7970945F240D2F49004E4F60 /* LCNavgationView.m in Sources */,
 				797093FC240D2359004E4F60 /* AppDelegate.m in Sources */,
 				7970940D240D235C004E4F60 /* main.m in Sources */,

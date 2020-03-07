@@ -17,6 +17,7 @@ PODS:
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
+  - Masonry (1.1.0)
   - MJExtension (3.2.1)
   - MJRefresh (3.3.1)
   - SDWebImage (5.5.2):
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - IGListKit
+  - Masonry
   - MJExtension
   - MJRefresh
   - SDWebImage
@@ -41,6 +43,7 @@ SPEC REPOS:
     - AFNetworking
     - IGListDiffKit
     - IGListKit
+    - Masonry
     - MJExtension
     - MJRefresh
     - SDWebImage
@@ -51,12 +54,13 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 93db6a04d2adfb00d6c360d27102a4c80f22ed58
+PODFILE CHECKSUM: ce0054003396c4810dce27c5f0c79f6218ad4d67
 
 COCOAPODS: 1.8.0

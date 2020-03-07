@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LCContentCellViewModel : NSObject<IGListDiffable>
 
+@property(nonatomic, readonly) NSString *content;
+@property(nonatomic, readonly) NSString *userName;
+@property(nonatomic, readonly) NSInteger imageCount;
+
 @property(nonatomic, readonly) CGFloat picHeight;
 @property(nonatomic, readonly) CGFloat cellHeight;
 

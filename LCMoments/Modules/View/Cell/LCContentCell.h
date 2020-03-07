@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "LCDefine.h"
+#import "LCContentCellViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LCContentCell : UICollectionViewCell
+
+- (void)feedCellWithViewModel:(LCContentCellViewModel *)viewModel;
 
 @end
 

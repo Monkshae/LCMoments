@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "LCTweetViewModel.h"
+#import "LCDefine.h"
+#import "LCContentSectionController.h"
 //#import <AFNetworking/AFNetworking.h>
 //#import <SVProgressHUD/SVProgressHUD.h>
 //#import <MJExtension/MJExtension.h>
@@ -16,11 +19,15 @@
 //static NSString * const kUserInfoUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/jsmith.json";
 //static NSString * const kTweetsUrl = @"https://s3.ap-southeast-1.amazonaws.com/neuron-server-qa/STATIC/tweets.json";
 
-@interface ViewController ()
+@interface ViewController ()<IGListAdapterDataSource, UIScrollViewDelegate>
+
+@property (nonatomic, strong) LCTweetViewModel *viewModel;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) IGListAdapter *adapter;
 
 //@property (nonatomic, strong) AFURLSessionManager *manager;
 //@property (nonatomic, strong) LCUserInfoModel *userInfo;
-//@property (nonatomic, strong) NSArray <LCTweetModel *> *tweetList;
+@property (nonatomic, strong) NSArray <LCContentCellViewModel *> *tweetList;
 
 @end
 
@@ -28,7 +35,66 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self requestTweets];
+
+    self.title = @"朋友圈";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview:self.collectionView];
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(@([UIApplication sharedApplication].statusBarFrame.size.height+44));
+    }];
+    self.adapter.collectionView = self.collectionView;
+    self.adapter.dataSource = self;
+            
+    self.viewModel = [[LCTweetViewModel alloc]init];
+    [self.viewModel requestUserInfo];
+    __weak typeof(self) weakSelf = self;
+    [self.viewModel requestTweetsWithSuccessBlock:^(NSArray<LCContentCellViewModel *> * _Nonnull list) {
+        weakSelf.tweetList = [list mutableCopy];
+        [self.adapter reloadDataWithCompletion:nil];
+    }];
+}
+
+
+- (NSArray<id <IGListDiffable>> *)objectsForListAdapter:(IGListAdapter *)listAdapter {
+    return self.tweetList;
+}
+
+- (IGListSectionController *)listAdapter:(IGListAdapter *)listAdapter sectionControllerForObject:(id)object {
+    IGListSectionController *vc = [LCContentSectionController new];
+    return vc;
+}
+
+- (nullable UIView *)emptyViewForListAdapter:(IGListAdapter *)listAdapter {
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 90)];
+    view.backgroundColor = [UIColor redColor];
+    return view;
+}
+
+#pragma mark - Lazying loading
+- (IGListAdapter *)adapter {
+    if (!_adapter) {
+        _adapter = [[IGListAdapter alloc] initWithUpdater:[IGListAdapterUpdater new] viewController:self];
+        _adapter.scrollViewDelegate = self;
+    }
+    
+    return _adapter;
+}
+
+- (UICollectionView *)collectionView{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *flow = [UICollectionViewFlowLayout new];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flow];
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+    }
+    return _collectionView;
 }
 
 //- (void)requestUserInfo {
